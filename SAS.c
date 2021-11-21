@@ -113,7 +113,12 @@ int main()
                                                 printf("entrer la somme de retrait en DH superieur a # 0 #: \n");
                                                 scanf("%d", &retrait);
                                             }
+
                                         }while (retrait<0 );
+                                        if (retrait>clt[0].mantant)
+                                            printf(" Votre Mantant ne pa Suffisant pour retirer \n");
+
+                                        else
 
                                             clt[0].mantant= clt[0].mantant-retrait;
 
