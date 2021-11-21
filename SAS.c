@@ -22,7 +22,8 @@ int main()
 {
     // les client
     struct client clt[100];
- int choix ,i , npr=0,count_clt=0,retrait =0,depot=0;
+ int choix ,i , npr=0,count_clt=0,retrait =0,depot=0,found;
+ char search [50];
  clt[i].mantant =0;
         do
         {
@@ -101,22 +102,41 @@ int main()
                           switch(choix_Operation)
                             {
                                 case 1:
-                                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n ",1,clt[0].nom,clt[0].numero,clt[0].CIN,clt[0].mantant);
-                                printf("entrer la somme de retrait en DH : \n");
-                                scanf("%d", &retrait);
 
-                                clt[0].mantant= clt[0].mantant-retrait;
+
+                                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d  DH] \n\n ",1,clt[0].nom,clt[0].numero,clt[0].CIN,clt[0].mantant);
+                                        printf("entrer la somme de retrait en DH : \n");
+                                        scanf("%d", &retrait);
+                                        do
+                                        {
+                                            if(retrait<0 ){
+                                                printf("entrer la somme de retrait en DH superieur a # 0 #: \n");
+                                                scanf("%d", &retrait);
+                                            }
+                                        }while (retrait<0 );
+
+                                            clt[0].mantant= clt[0].mantant-retrait;
+
 
                                     break;
 
                                 case 2:
-                                    printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n ",1,clt[0].nom,clt[0].numero,clt[0].CIN,clt[0].mantant);
-                                printf("entrer la somme de depot en DH : \n");
-                                scanf("%d", &depot);
+                                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d DH] \n\n ",1,clt[0].nom,clt[0].numero,clt[0].CIN,clt[0].mantant);
+                                        printf("entrer la somme de depot en DH : \n");
+                                        scanf("%d", &depot);
+                                          do
+                                        {
 
-                                clt[0].mantant= clt[0].mantant+depot;
+                                            if(depot<0){
+                                                printf("entrer la somme de retrait en DH superieur a # 0 #: \n");
+                                                scanf("%d", &depot);
+                                            }
 
-                                    break;
+                                        }while (depot<0 );
+
+                                        clt[0].mantant= clt[0].mantant+depot;
+
+                                   break;
 
                                 default:
                                     break;
@@ -139,7 +159,22 @@ int main()
 
                     break;
 
-                case 5: printf("4 => recherche\n");
+                case 5:
+                    printf("Enter a string to search: ");
+                       scanf("%s", search);
+
+                       for(i=0; i<count_clt; i++)
+                       {
+
+                         if(strcmp(search, clt[i].CIN )== 0)
+                         {
+                           found=1;
+                           printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
+                                   ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
+                         }
+                       }
+
+                        if(found==0) printf("Not found");
 
                     break;
 
