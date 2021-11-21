@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1637488909 source:c:\users\linovo\desktop\gestin bancaire\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

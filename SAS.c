@@ -22,7 +22,7 @@ int main()
 {
     // les client
     struct client clt[100];
- int choix ,i , npr=0,count_clt=0;
+ int choix ,i , npr=0,count_clt=0,retrait =0,depot=0;
  clt[i].mantant =0;
         do
         {
@@ -43,6 +43,7 @@ int main()
 
 
 
+
             }while(choix <1 || choix>6);
           switch(choix)
           {
@@ -54,6 +55,7 @@ int main()
                         printf("entrer le CIN client : ");
                         scanf("%s",&clt[count_clt].CIN);
                             count_clt++;
+
 
 
                         system("cls");
@@ -98,12 +100,21 @@ int main()
                         }while(choix_Operation <1 || choix_Operation>2);
                           switch(choix_Operation)
                             {
-                                case 1: printf("entrer le nom client : \n");
-                                printf("entrer le nom client : %d \n", choix_Operation);
+                                case 1:
+                                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n ",1,clt[0].nom,clt[0].numero,clt[0].CIN,clt[0].mantant);
+                                printf("entrer la somme de retrait en DH : \n");
+                                scanf("%d", &retrait);
+
+                                clt[0].mantant= clt[0].mantant-retrait;
 
                                     break;
 
-                                case 2: printf("entrer le nombre des compte :\n");
+                                case 2:
+                                    printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n ",1,clt[0].nom,clt[0].numero,clt[0].CIN,clt[0].mantant);
+                                printf("entrer la somme de depot en DH : \n");
+                                scanf("%d", &depot);
+
+                                clt[0].mantant= clt[0].mantant+depot;
 
                                     break;
 
@@ -111,7 +122,7 @@ int main()
                                     break;
                             }
 
-                        system("cls");
+                        //system("cls");
 
                 break;
 
