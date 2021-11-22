@@ -85,7 +85,7 @@
                 min = j;
          if(min!=i)
          {
-            //échanger t[i] et t[min]
+
             temp = clt[i];
             clt[i]=clt[min];
             clt[min]=temp;
@@ -162,6 +162,8 @@
                 scanf("%s", search);
                 for(int i = 0; i < count_clt; i++){
                     if(strcmp(search, clt[i].CIN) == 0){
+                      printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant %d DH \n\n "
+                              ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
                         return i;
                     }
                 }
@@ -262,19 +264,9 @@ int main()
                             {
                                 case 1: // retrait ==========================================================================
 
-                                                     printf("Enter a CIN to search: ");
-                                                       scanf("%s", search);
-                                                    found=-1;
-                                                       for(i=0; i<count_clt; i++)
-                                                       {
 
-                                                         if(strcmp(search, clt[i].CIN )== 0)
-                                                         {
-                                                           found=i;
-                                                           printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant %d DH \n\n "
-                                                                   ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
-                                                         }
-                                                       }
+                                                    found = searchFunction();
+
                                                       if (found>=0)
                                                         {
                                                         printf("entrer la somme de retrait en DH : \n");
@@ -306,21 +298,9 @@ int main()
 
                             case 2: //  DEPOT  =====================================================================================
 
-                                                printf("Enter a CIN to search: ");
-                                               scanf("%s", search);
-                                                found=-1;
-                                               for(i=0; i<count_clt; i++)
-                                               {
-
-                                                 if(strcmp(search, clt[i].CIN )== 0)
-                                                 {
-                                                   found=i;
-                                                   printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
-                                                           ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
-                                                 }
+                                                found = searchFunction();
 
 
-                                               }
                                                 if (found>=0)
                                                 {
                                                    printf("entrer la somme de depot en DH : \n");
@@ -388,18 +368,11 @@ int main()
 
                                  break;
 
-                   case 5:  // SEARCH ====================================================================================
+                        case 5:  // SEARCH ====================================================================================
 
 
-                        indexOfAccount = searchFunction();
-                        if(indexOfAccount != -1){
-                            printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
-                                                           ,indexOfAccount+1,
-                                   clt[indexOfAccount].nom,
-                                   clt[indexOfAccount].numero,
-                                   clt[indexOfAccount].CIN,
-                                   clt[indexOfAccount].mantant);
-}
+                            searchFunction();
+
 
                                 break;
 
