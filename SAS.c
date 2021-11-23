@@ -28,8 +28,7 @@
          if(min!=i)
          {
             //échanger t[i] et t[min]
-            temp = clt[i];
-            clt[i]=clt[min];
+            temp = clt[i];            clt[i]=clt[min];
             clt[min]=temp;
          }
      }
@@ -55,7 +54,7 @@
                 min = j;
          if(min!=i)
          {
-            //échanger t[i] et t[min]
+
             temp = clt[i];
             clt[i]=clt[min];
             clt[min]=temp;
@@ -187,12 +186,13 @@ int main()
 
                 printf(" ======================== M E N U ===========================\n\n");
 
-                printf("     1 => cree un copmte bancaire \n");
-                printf("     2 => plusieurs comptes bancaires\n");
+                printf("     1 => Cree un copmte bancaire \n");
+                printf("     2 => Plusieurs comptes bancaires\n");
                 printf("     3 => Operations \n");
                 printf("     4 => Affichage\n");
-                printf("     5 => recherche par CIN \n");
-                printf("     6 => Quitter l’application \n\n");
+                printf("     5 => Recherche par CIN \n");
+                printf("     6 => Fidelisation \n");
+                printf("     7 => Quitter l’application \n\n");
 
                 printf(" ====================== Votre choix ===========================\n");
 			scanf("%d", &choix);
@@ -200,7 +200,7 @@ int main()
 
 
 
-            }while(choix <1 || choix>6);
+            }while(choix <1 || choix>7);
 
           switch(choix)
           {
@@ -322,8 +322,6 @@ int main()
 
                                                 }
 
-
-
                                                         break;
 
                                                         default:
@@ -345,9 +343,9 @@ int main()
                                     printf(" 1 => asendant\n");
                                     printf(" 2 => desendant \n");
                                     printf(" 3 => asendant par valeur\n");
-                                    printf(" 4 => desendant par valeur \n");
+                                    printf(" 4 => desendant par valeur \n\n \n");
 
-                                    printf("  Votre choix\n : ");
+                                    printf("  Votre choix : ");
                                     scanf("%d", &choix_tri);
 
                                 }while(choix_tri <1 || choix_tri>4);
@@ -373,13 +371,44 @@ int main()
 
                             searchFunction();
 
-
                                 break;
 
+                       case 6: //  Fidelisation  ==============================================================================
+
+                                  printf("======================= Fidelisation============================ \n");
+
+                            int min;
+     struct client temp;
+     int i;
+      for(int i = 0 ; i < count_clt-1 ; i++)
+     {
+         min = i;
+         for(int j = i+1 ; j < count_clt ; j++)
+             if(clt[j].mantant > clt[min].mantant)
+                min = j;
+         if(min!=i)
+         {
+
+            temp = clt[i];
+            clt[i]=clt[min];
+            clt[min]=temp;
+         }
+     }
+     for(i=0 ; i<3 ; i++)
+            {
+                clt[i].mantant += clt[i].mantant * 0.013;
+                  printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
+                                   ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
+            }
+
+
+
+
+                               break;
                                 default:
                                     break;
                             }
-                        } while(choix !=6);
+                        } while(choix !=7);
                     return 0;
                     system("pause");
     }
