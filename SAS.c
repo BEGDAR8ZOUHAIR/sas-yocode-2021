@@ -18,21 +18,40 @@
 
                 void tri_Ascendant()
                 {
-                    int i ,j ;
-                    struct client temp;
-                    for (i=0 ; i<count_clt-1 ; i++)
-                    {
-                      for (j=i+1 ; i<count_clt ; i++)
-                      {
-                          if (clt[i].mantant>clt[j].mantant)
-                          {
-                            temp = clt[i];
-                            clt[i] = clt[j];
-                            clt[j] = temp;
-                          }
-                       }
+//                    int i ,j ;
+//                    struct client temp;
+//                    for (i=0 ; i<count_clt-1 ; i++)
+//                    {
+//                      for (j=i+1 ; i<count_clt ; i++)
+//                      {
+//                          if (clt[i].mantant>clt[j].mantant)
+//                          {
 
-                      }
+//                            temp = clt[i];
+//                            clt[i] = clt[j];
+//                            clt[j] = temp;
+//                          }
+//                       }
+//
+//                      }
+
+                        int min;
+                        struct client temp;
+                        int i,j;
+
+                        for( i = 0 ; i < count_clt-1 ; i++)
+                        {
+                            min = i;
+                            for( j = i+1 ; j < count_clt ; j++)
+                                if(clt[j].mantant > clt[min].mantant)
+                                    min = j;
+                            if(min!=i)
+                            {
+                                temp = clt[i];
+                                clt[i]=clt[min];
+                                clt[min]=temp;
+                            }
+                        }
                    }
 
 
@@ -40,21 +59,39 @@
 
     void tri_descendant()
                 {
-                    int i ,j ;
-                    struct client temp;
-                    for (i=0 ; i<count_clt-1 ; i++)
-                    {
-                      for (j=i+1 ; i<count_clt ; i++)
-                       {
-                          if (clt[i].mantant<clt[j].mantant)
-                          {
-                            temp = clt[i];
-                            clt[i] = clt[j];
-                            clt[j] = temp;
-                          }
-                       }
+//                    int i ,j ;
+//                    struct client temp;
+//                    for (i=0 ; i<count_clt-1 ; i++)
+//                    {
+//                      for (j=i+1 ; i<count_clt ; i++)
+//                       {
+//                          if (clt[i].mantant<clt[j].mantant)
+//                          {
+//                            temp = clt[i];
+//                            clt[i] = clt[j];
+//                            clt[j] = temp;
+//                          }
+//                       }
+//
+//                      }
 
-                      }
+                    int min;
+                    struct client temp;
+                    int i;
+
+                    for(int i = 0 ; i < count_clt-1 ; i++)
+                    {
+                        min = i;
+                        for(int j = i+1 ; j < count_clt ; j++)
+                            if(clt[j].mantant < clt[min].mantant)
+                                min = j;
+                        if(min!=i)
+                        {
+                            temp = clt[i];
+                            clt[i]=clt[min];
+                            clt[min]=temp;
+                        }
+                    }
                    }
      // FUNCTION OF AFFICHAGE ====================================================================================
 
@@ -200,7 +237,9 @@ int main()
                             scanf("%s",&clt[i].numero);
                             printf("entrer le CIN de client : ");
                             scanf("%s",&clt[i].CIN);
-                            clt[i].mantant =0;
+                            printf("entrer le mantant : ");
+                            scanf("%d",&clt[i].mantant);
+
 
                             printf("\n\n ");
 
@@ -353,7 +392,6 @@ int main()
                                                 min = j;
                                         if(min!=i)
                                         {
-
                                             temp = clt[i];
                                             clt[i]=clt[min];
                                             clt[min]=temp;
