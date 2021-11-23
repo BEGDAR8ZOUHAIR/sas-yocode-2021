@@ -9,151 +9,111 @@
        char  numero [10];
        char  CIN [10];
         int mantant;
-
    };
-   // function of tri ascendant ===============================================================================
-
-   void tri_Ascendant( struct client clt[], int count_clt)
-{
-
-     int min;
-     struct client temp;
-     int i;
-      for(int i = 0 ; i < count_clt-1 ; i++)
-     {
-         min = i;
-         for(int j = i+1 ; j < count_clt ; j++)
-             if(clt[j].mantant < clt[min].mantant)
-                min = j;
-         if(min!=i)
-         {
-            //échanger t[i] et t[min]
-            temp = clt[i];            clt[i]=clt[min];
-            clt[min]=temp;
-         }
-     }
-     for(i=0 ; i<count_clt ; i++)
-                         {
-
-        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
-                ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
-                         }
-}
-    // function of  tri descendant =====================================================================
-
-    void tri_Descendant( struct client clt[], int count_clt)
-{
-     int min;
-     struct client temp;
-     int i;
-      for(int i = 0 ; i < count_clt-1 ; i++)
-     {
-         min = i;
-         for(int j = i+1 ; j < count_clt ; j++)
-             if(clt[j].mantant > clt[min].mantant)
-                min = j;
-         if(min!=i)
-         {
-
-            temp = clt[i];
-            clt[i]=clt[min];
-            clt[min]=temp;
-         }
-     }
-     for(i=0 ; i<count_clt ; i++)
-                         {
-
-        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
-            ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
-                         }
-}
-    // functin of tri ascendant par valeur ===================================================================
-
-     void tri_AscendantVal( struct client clt[], int count_clt)
-{
-
-
-     int min;
-     struct client temp;
-     int i,pos;
-      for(int i = 0 ; i < count_clt-1 ; i++)
-     {
-         min = i;
-         for(int j = i+1 ; j < count_clt ; j++)
-             if(clt[j].mantant < clt[min].mantant)
-                min = j;
-         if(min!=i)
-         {
-
-            temp = clt[i];
-            clt[i]=clt[min];
-            clt[min]=temp;
-         }
-     }
-     int Val ;
-     printf(" enter a valeur de recherche : ");
-     scanf("%d",&Val);
-      for (i=0 ; i< count_clt  ;i++ )
-
-     {
-         if(clt[i].mantant==Val)
-         {
-             pos=i;
-         }
-     }
-     for(i=pos ; i<count_clt ; i++)
-                         {
-
-                            printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
-                                   ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
-                         }
-}
-       // function of tri descendant par valeur =====================================================================
-
-        void tri_DescendantVal( struct client clt[], int count_clt)
-{
-     int min;
-     struct client temp;
-     int i,pos;
-      for(int i = 0 ; i < count_clt-1 ; i++)
-     {
-         min = i;
-         for(int j = i+1 ; j < count_clt ; j++)
-             if(clt[j].mantant > clt[min].mantant)
-                min = j;
-         if(min!=i)
-         {
-            //échanger t[i] et t[min]
-            temp = clt[i];
-            clt[i]=clt[min];
-            clt[min]=temp;
-         }
-     }
-     int Val ;
-     printf(" enter a valeur de recherche : ");
-     scanf("%d",&Val);
-      for (i=0 ; i< count_clt  ;i++ )
-
-     {
-         if(clt[i].mantant==Val)
-         {
-             pos=i;
-         }
-
-        }
-         for(i=count_clt-1; i>= pos ; i--)
-                         {
-
-                            printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
-                                   ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
-                         }
-     }
-       // variable ======================================================================================================
+        // variable ======================================================================================================
 
                     struct client clt[100];
                     int count_clt=0;
+   // function of tri ascendant ===============================================================================
 
-      // function of search ==============================================================================================
+                void tri_Ascendant()
+                {
+                    int i ,j ;
+                    struct client temp;
+                    for (i=0 ; i<count_clt-1 ; i++)
+                    {
+                      for (j=i+1 ; i<count_clt ; i++)
+                      {
+                          if (clt[i].mantant>clt[j].mantant)
+                          {
+                            temp = clt[i];
+                            clt[i] = clt[j];
+                            clt[j] = temp;
+                          }
+                       }
+
+                      }
+                   }
+
+
+    // function of  tri descendant =====================================================================
+
+    void tri_descendant()
+                {
+                    int i ,j ;
+                    struct client temp;
+                    for (i=0 ; i<count_clt-1 ; i++)
+                    {
+                      for (j=i+1 ; i<count_clt ; i++)
+                       {
+                          if (clt[i].mantant<clt[j].mantant)
+                          {
+                            temp = clt[i];
+                            clt[i] = clt[j];
+                            clt[j] = temp;
+                          }
+                       }
+
+                      }
+                   }
+     // FUNCTION OF AFFICHAGE ====================================================================================
+
+                void affichage ()
+                {
+
+                    for(int i=0 ; i<count_clt ; i++)
+                         {
+
+                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
+                            ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
+                         }
+                }
+
+
+
+    // functin of tri ascendant par valeur ===================================================================
+
+     void tri_AscendantVal()
+{
+
+   tri_Ascendant();
+     int Val,i ;
+     printf(" enter a valeur de recherche : ");
+     scanf("%d",&Val);
+      for (i=0 ; i< count_clt  ;i++ )
+
+     {
+         if(clt[i].mantant>=Val)
+         {
+
+                printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
+                       ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
+         }
+     }
+
+}
+       // function of tri descendant par valeur =====================================================================
+
+        void tri_DescendantVal()
+{
+
+   tri_descendant();
+     int Val,i ;
+     printf(" enter a valeur de recherche : ");
+     scanf("%d",&Val);
+      for (i=0 ; i< count_clt  ;i++ )
+
+     {
+         if(clt[i].mantant>=Val)
+         {
+           printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
+                                   ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
+         }
+
+        }
+
+}
+           // function of search ==============================================================================================
 
                 int searchFunction(){
                 char search[25];
@@ -173,16 +133,17 @@
 
 int main()
 {
-    // LES VARIABLE ===========================================================================================
+           // LES VARIABLE ===========================================================================================
 
                     int choix ,i , npr=0,retrait =0,depot=0,found, indexOfAccount;
                     char search [50];
                     clt[i].mantant =0;
+
+            // menu prinsipale ==============================================================================
         do
         {
             do
             {
-             // menu prinsipale ==============================================================================
 
                 printf(" ======================== M E N U ===========================\n\n");
 
@@ -192,10 +153,10 @@ int main()
                 printf("     4 => Affichage\n");
                 printf("     5 => Recherche par CIN \n");
                 printf("     6 => Fidelisation \n");
-                printf("     7 => Quitter l’application \n\n");
+                printf("     7 => Quitter l Application \n\n");
 
                 printf(" ====================== Votre choix ===========================\n");
-			scanf("%d", &choix);
+			    scanf("%d", &choix);
 
 
 
@@ -203,7 +164,7 @@ int main()
             }while(choix <1 || choix>7);
 
           switch(choix)
-          {
+           {
 
                 case 1: // entrer un compte ===========================================================================
 
@@ -213,6 +174,8 @@ int main()
                          scanf("%s",&clt[count_clt].numero);
                          printf("entrer le CIN client : ");
                          scanf("%s",&clt[count_clt].CIN);
+                         printf("entrer le mantant : ");
+                         scanf("%d",&clt[count_clt].mantant);
                             count_clt++;
 
 
@@ -247,7 +210,7 @@ int main()
 
                     break;
 
-                case 3: // enter les operation ==============================================================================
+         case 3: // enter les operation ==============================================================================
                              printf("Operations \n");
 
                             int choix_Operation;
@@ -262,79 +225,79 @@ int main()
                                 }while(choix_Operation <1 || choix_Operation>2);
                                   switch(choix_Operation)
                             {
-                                case 1: // retrait ==========================================================================
+                   case 1: // retrait ==========================================================================
 
 
-                                                    found = searchFunction();
+                            found = searchFunction();
 
-                                                      if (found>=0)
-                                                        {
-                                                        printf("entrer la somme de retrait en DH : \n");
-                                                        scanf("%d", &retrait);
-                                                        do
-                                                        {
-                                                            if(retrait<0 && retrait>clt[i].mantant ) // CONDITION POUR LE MANTANT SUPERIEUR A 0
-                                                                {
-                                                                printf("entrer la somme de retrait en DH superieur a  0 : \n");
-                                                                scanf("%d", &retrait);
-                                                                }
+                              if (found>=0)
+                                {
+                                printf("entrer la somme de retrait en DH : \n");
+                                scanf("%d", &retrait);
+                                do
+                                {
+                                    if(retrait<0 && retrait>clt[i].mantant ) // CONDITION POUR LE MANTANT SUPERIEUR A 0
+                                        {
+                                        printf("entrer la somme de retrait en DH superieur a  0 : \n");
+                                        scanf("%d", &retrait);
+                                        }
 
-                                                        }while (retrait<0 && retrait>clt[i].mantant );
-                                                        if (retrait>clt[i].mantant ) // POUR NE PAS RETRAIT A COMPTE IF MANTANT EGALE 0
+                                }while (retrait<0 && retrait>clt[i].mantant );
+                                if (retrait>clt[i].mantant ) // POUR NE PAS RETRAIT A COMPTE IF MANTANT EGALE 0
 
-                                                            printf(" Votre Mantant ne pa Suffisant pour retirer \n");
-
-
-                                                            clt[i].mantant= clt[i].mantant-retrait;
-                                                        }
-
-                                                        else
-                                                        {
-
-                                                         printf("Not found");
-
-                                                        }
-                                               break;
-
-                            case 2: //  DEPOT  =====================================================================================
-
-                                                found = searchFunction();
+                                    printf(" Votre Mantant ne pa Suffisant pour retirer \n");
 
 
-                                                if (found>=0)
-                                                {
-                                                   printf("entrer la somme de depot en DH : \n");
-                                                scanf("%d", &depot);
-                                                  do
-                                                {
+                                    clt[i].mantant= clt[i].mantant-retrait;
+                                }
 
-                                                    if(depot<0){ // CONDITION POUR LE MANTANT SUPERIEUR A 0
-                                                        printf("entrer la somme de retrait en DH superieur a # 0 #: \n");
-                                                        scanf("%d", &depot);
-                                                    }
+                                else
+                                {
 
-                                                }while (depot<0 );
+                                 printf("Not found");
 
-                                                clt[found].mantant= clt[found].mantant+depot;
-                                                }else
-                                                {
-                                                 printf("Not found");
+                                }
+                       break;
 
-                                                }
+                   case 2: //  DEPOT  =====================================================================================
 
-                                                        break;
-
-                                                        default:
-                                                         break;
-                                                        }
-
-                                                  system("cls");
-
-                                                   break;
+                        found = searchFunction();
 
 
+                        if (found>=0)
+                        {
+                           printf("entrer la somme de depot en DH : \n");
+                        scanf("%d", &depot);
+                          do
+                        {
 
-                     case 4: // AFFICHAGE ==================================================================================
+                            if(depot<0){ // CONDITION POUR LE MANTANT SUPERIEUR A 0
+                                printf("entrer la somme de retrait en DH superieur a # 0 #: \n");
+                                scanf("%d", &depot);
+                            }
+
+                        }while (depot<0 );
+
+                        clt[found].mantant= clt[found].mantant+depot;
+                        }else
+                        {
+                         printf("Not found");
+
+                        }
+
+                                break;
+
+                                default:
+                                 break;
+                                }
+
+                          system("cls");
+
+                           break;
+
+
+
+     case 4: // AFFICHAGE ==================================================================================
 
                                printf(" ====================  Affichage  ==============================\n\n");
                                        int choix_tri;
@@ -350,66 +313,69 @@ int main()
 
                                 }while(choix_tri <1 || choix_tri>4);
                                   switch(choix_tri){
-                              case 1:
-                                tri_Ascendant(clt,count_clt);
-                                break;
-                              case 2 :
-                                tri_Descendant(clt,count_clt);
-                                break;
-                                case 3 :
-                                tri_AscendantVal(clt,count_clt);
-                                break;
-                                case 4 :
-                                tri_DescendantVal(clt,count_clt);
-                                break;
+                      case 1:   tri_Ascendant();
+                                 affichage ();
+                        break;
+
+                      case 2 :   tri_descendant();
+                                 affichage ();
+                        break;
+
+                        case 3 :tri_AscendantVal();
+                        break;
+
+                        case 4 :tri_DescendantVal();
+                        break;
                                   }
 
-                                 break;
+                        break;
 
-                        case 5:  // SEARCH ====================================================================================
+           case 5:  // SEARCH ====================================================================================
 
 
-                            searchFunction();
+                     searchFunction();
 
-                                break;
+                             break;
 
-                       case 6: //  Fidelisation  ==============================================================================
+            case 6: //  Fidelisation  ==============================================================================
 
                                   printf("======================= Fidelisation============================ \n");
 
-                            int min;
-     struct client temp;
-     int i;
-      for(int i = 0 ; i < count_clt-1 ; i++)
-     {
-         min = i;
-         for(int j = i+1 ; j < count_clt ; j++)
-             if(clt[j].mantant > clt[min].mantant)
-                min = j;
-         if(min!=i)
-         {
+                                    int min;
+                                    struct client temp;
+                                    int i;
 
-            temp = clt[i];
-            clt[i]=clt[min];
-            clt[min]=temp;
-         }
-     }
-     for(i=0 ; i<3 ; i++)
-            {
-                clt[i].mantant += clt[i].mantant * 0.013;
-                  printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
-                                   ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
+                                    for(int i = 0 ; i < count_clt-1 ; i++)
+                                    {
+                                        min = i;
+                                        for(int j = i+1 ; j < count_clt ; j++)
+                                            if(clt[j].mantant > clt[min].mantant)
+                                                min = j;
+                                        if(min!=i)
+                                        {
+
+                                            temp = clt[i];
+                                            clt[i]=clt[min];
+                                            clt[min]=temp;
+                                        }
+                                    }
+                                    for(i=0 ; i<3 ; i++)
+                                    {
+                                        clt[i].mantant += clt[i].mantant * 0.013;
+
+                                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
+                                                        ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
+                                    }
+
+
+
+
+                break;
+                default:
+                    break;
             }
-
-
-
-
-                               break;
-                                default:
-                                    break;
-                            }
-                        } while(choix !=7);
-                    return 0;
+        } while(choix !=7);
+              return 0;
                     system("pause");
     }
 
