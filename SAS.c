@@ -255,11 +255,13 @@ int main()
                                 scanf("%d", &retrait);
                                 do
                                 {
-                                    if(retrait<0 && retrait>clt[i].mantant ) // CONDITION POUR LE MANTANT SUPERIEUR A 0
-                                        {
+
+
                                         printf("entrer la somme de retrait en DH superieur a  0 : \n");
                                         scanf("%d", &retrait);
-                                        }
+
+                                       clt[i].mantant= clt[i].mantant-retrait;
+
 
                                 }while (retrait<0 && retrait>clt[i].mantant );
                                 if (retrait>clt[i].mantant ) // POUR NE PAS RETRAIT A COMPTE IF MANTANT EGALE 0
@@ -267,7 +269,6 @@ int main()
                                     printf(" Votre Mantant ne pa Suffisant pour retirer \n");
 
 
-                                    clt[i].mantant= clt[i].mantant-retrait;
                                 }
 
                                 else
