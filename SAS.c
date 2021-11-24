@@ -14,6 +14,24 @@
 
                     struct client clt[100];
                     int count_clt=0;
+
+      // function of search ==============================================================================================
+
+                int searchFunction(){
+                char search[25];
+                printf("Please enter cin: ");
+                scanf("%s", search);
+                for(int i = 0; i < count_clt; i++){
+                    if(strcmp(search, clt[i].CIN) == 0){
+                      printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant %d DH \n\n "
+                              ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
+                        return i;
+                    }
+                }
+                printf("cin doesnt exist\n");
+                return -1;
+                }
+
    // function of tri ascendant ===============================================================================
 
                 void tri_Ascendant()
@@ -43,7 +61,7 @@
                         {
                             min = i;
                             for( j = i+1 ; j < count_clt ; j++)
-                                if(clt[j].mantant > clt[min].mantant)
+                                if( clt[min].mantant > clt[j].mantant)
                                     min = j;
                             if(min!=i)
                             {
@@ -83,7 +101,7 @@
                     {
                         min = i;
                         for(int j = i+1 ; j < count_clt ; j++)
-                            if(clt[j].mantant < clt[min].mantant)
+                            if(  clt[min].mantant < clt[j].mantant )
                                 min = j;
                         if(min!=i)
                         {
@@ -150,22 +168,7 @@
         }
 
 }
-           // function of search ==============================================================================================
 
-                int searchFunction(){
-                char search[25];
-                printf("Please enter cin: ");
-                scanf("%s", search);
-                for(int i = 0; i < count_clt; i++){
-                    if(strcmp(search, clt[i].CIN) == 0){
-                      printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant %d DH \n\n "
-                              ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
-                        return i;
-                    }
-                }
-                printf("cin doesnt exist\n");
-                return -1;
-                }
 
 
 int main()
@@ -380,23 +383,25 @@ int main()
 
                                   printf("======================= Fidelisation============================ \n");
 
-                                    int min;
-                                    struct client temp;
-                                    int i;
+//                                    int min;
+//                                    struct client temp;
+//                                    int i;
+//
+//                                    for(int i = 0 ; i < count_clt-1 ; i++)
+//                                    {
+//                                        min = i;
+//                                        for(int j = i+1 ; j < count_clt ; j++)
+//                                            if(clt[j].mantant > clt[min].mantant)
+//                                                min = j;
+//                                        if(min!=i)
+//                                        {
+//                                            temp = clt[i];
+//                                            clt[i]=clt[min];
+//                                            clt[min]=temp;
+//                                        }
+//                                    }
+                                    tri_descendant();
 
-                                    for(int i = 0 ; i < count_clt-1 ; i++)
-                                    {
-                                        min = i;
-                                        for(int j = i+1 ; j < count_clt ; j++)
-                                            if(clt[j].mantant > clt[min].mantant)
-                                                min = j;
-                                        if(min!=i)
-                                        {
-                                            temp = clt[i];
-                                            clt[i]=clt[min];
-                                            clt[min]=temp;
-                                        }
-                                    }
                                     for(i=0 ; i<3 ; i++)
                                     {
                                         clt[i].mantant += clt[i].mantant * 0.013;
