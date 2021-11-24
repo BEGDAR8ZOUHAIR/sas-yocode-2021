@@ -28,7 +28,7 @@
                         return i;
                     }
                 }
-                printf("cin doesnt exist\n");
+                printf("cin ne pas trouver\n");
                 return -1;
                 }
 
@@ -36,22 +36,7 @@
 
                 void tri_Ascendant()
                 {
-//                    int i ,j ;
-//                    struct client temp;
-//                    for (i=0 ; i<count_clt-1 ; i++)
-//                    {
-//                      for (j=i+1 ; i<count_clt ; i++)
-//                      {
-//                          if (clt[i].mantant>clt[j].mantant)
-//                          {
 
-//                            temp = clt[i];
-//                            clt[i] = clt[j];
-//                            clt[j] = temp;
-//                          }
-//                       }
-//
-//                      }
 
                         int min;
                         struct client temp;
@@ -77,21 +62,7 @@
 
     void tri_descendant()
                 {
-//                    int i ,j ;
-//                    struct client temp;
-//                    for (i=0 ; i<count_clt-1 ; i++)
-//                    {
-//                      for (j=i+1 ; i<count_clt ; i++)
-//                       {
-//                          if (clt[i].mantant<clt[j].mantant)
-//                          {
-//                            temp = clt[i];
-//                            clt[i] = clt[j];
-//                            clt[j] = temp;
-//                          }
-//                       }
-//
-//                      }
+
 
                     int min;
                     struct client temp;
@@ -111,18 +82,6 @@
                         }
                     }
                    }
-     // FUNCTION OF AFFICHAGE ====================================================================================
-
-                void affichage ()
-                {
-
-                    for(int i=0 ; i<count_clt ; i++)
-                         {
-
-                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
-                            ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
-                         }
-                }
 
 
 
@@ -169,6 +128,19 @@
 
 }
 
+    // FUNCTION OF AFFICHAGE ====================================================================================
+
+                void affichage ()
+                {
+
+                    for(int i=0 ; i<count_clt ; i++)
+                         {
+
+                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
+                            ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
+                         }
+                }
+
 
 
 int main()
@@ -208,8 +180,9 @@ int main()
 
                 case 1: // entrer un compte ===========================================================================
 
-                         printf("\n entrer le nom client : ");
-                         scanf("%s",&clt[count_clt].nom);
+                         printf("\n entrer le nom et le prenom client : ");
+                         scanf("\n");
+                         scanf("%[^\n]s",&clt[count_clt].nom);
                          printf("entrer le numero client : ");
                          scanf("%s",&clt[count_clt].numero);
                          printf("entrer le CIN client : ");
@@ -217,7 +190,6 @@ int main()
                          printf("entrer le mantant : ");
                          scanf("%d",&clt[count_clt].mantant);
                             count_clt++;
-
 
 
                         system("cls");
@@ -234,8 +206,9 @@ int main()
                             system("cls");
 
                             printf("----|| client [%d] ||----\n\n",i+1);
-                            printf("entrer le nom de client [%d]= : ",i+1);
-                            scanf("%s",&clt[i].nom);
+                            printf("entrer le nom et le prenom de client [%d]= : ",i+1);
+                            scanf("\n");
+                            scanf("%[^\n]s",&clt[i].nom);
                             printf("entrer le numero de client : ");
                             scanf("%s",&clt[i].numero);
                             printf("entrer le CIN de client : ");
@@ -299,6 +272,7 @@ int main()
                                  printf("Not found");
 
                                 }
+                                  system("cls");
                        break;
 
                    case 2: //  DEPOT  =====================================================================================
@@ -354,28 +328,31 @@ int main()
                                     scanf("%d", &choix_tri);
 
                                 }while(choix_tri <1 || choix_tri>4);
-                                  switch(choix_tri){
-                      case 1:   tri_Ascendant();
-                                 affichage ();
-                        break;
+                                  switch(choix_tri)
+                                  {
+                                      case 1:   tri_Ascendant();
+                                                 affichage ();
+                                        break;
 
-                      case 2 :   tri_descendant();
-                                 affichage ();
-                        break;
+                                      case 2 :   tri_descendant();
+                                                 affichage ();
+                                        break;
 
-                        case 3 :tri_AscendantVal();
-                        break;
+                                        case 3 :tri_AscendantVal();
+                                        break;
 
-                        case 4 :tri_DescendantVal();
-                        break;
+                                        case 4 :tri_DescendantVal();
+                                        break;
                                   }
-
                         break;
+                                     system("cls");
 
            case 5:  // SEARCH ====================================================================================
 
 
                      searchFunction();
+
+                       system("cls");
 
                              break;
 
@@ -383,23 +360,7 @@ int main()
 
                                   printf("======================= Fidelisation============================ \n");
 
-//                                    int min;
-//                                    struct client temp;
-//                                    int i;
-//
-//                                    for(int i = 0 ; i < count_clt-1 ; i++)
-//                                    {
-//                                        min = i;
-//                                        for(int j = i+1 ; j < count_clt ; j++)
-//                                            if(clt[j].mantant > clt[min].mantant)
-//                                                min = j;
-//                                        if(min!=i)
-//                                        {
-//                                            temp = clt[i];
-//                                            clt[i]=clt[min];
-//                                            clt[min]=temp;
-//                                        }
-//                                    }
+
                                     tri_descendant();
 
                                     for(i=0 ; i<3 ; i++)
@@ -411,7 +372,7 @@ int main()
                                     }
 
 
-
+                                    system("cls");
 
                 break;
                 default:
