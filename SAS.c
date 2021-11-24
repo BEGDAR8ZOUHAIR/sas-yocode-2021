@@ -15,6 +15,28 @@
                     struct client clt[100];
                     int count_clt=0;
 
+
+
+        // function of les compte ==============================================================================================
+
+                       void introduire ()
+                       {
+
+                         printf("\n entrer le nom et le prenom client : " );
+                         scanf("\n");
+                         scanf("%[^\n]s",&clt[count_clt].nom);
+                         printf("entrer le numero client : ");
+                         scanf("%s",&clt[count_clt].numero);
+                         printf("entrer le CIN client : ");
+                         scanf("%s",&clt[count_clt].CIN);
+                         printf("entrer le mantant : ");
+                         scanf("%d",&clt[count_clt].mantant);
+                        }
+
+
+
+
+
       // function of search ==============================================================================================
 
                 int searchFunction(){
@@ -157,6 +179,7 @@ int main()
             do
             {
 
+
                 printf(" ======================== M E N U ===========================\n\n");
 
                 printf("     1 => Cree un copmte bancaire \n");
@@ -180,17 +203,9 @@ int main()
 
                 case 1: // entrer un compte ===========================================================================
 
-                         printf("\n entrer le nom et le prenom client : ");
-                         scanf("\n");
-                         scanf("%[^\n]s",&clt[count_clt].nom);
-                         printf("entrer le numero client : ");
-                         scanf("%s",&clt[count_clt].numero);
-                         printf("entrer le CIN client : ");
-                         scanf("%s",&clt[count_clt].CIN);
-                         printf("entrer le mantant : ");
-                         scanf("%d",&clt[count_clt].mantant);
-                            count_clt++;
 
+                            introduire ();
+                            count_clt++;
 
                         system("cls");
 
@@ -201,27 +216,16 @@ int main()
                          printf("entrer le nombre des compte :\n");
                          scanf("%d",&npr);
 
-                        for(i=count_clt ; i<npr+count_clt ; i++)
+                        for(i=0 ; i<npr ; i++)
                         {
                             system("cls");
 
-                            printf("----|| client [%d] ||----\n\n",i+1);
-                            printf("entrer le nom et le prenom de client [%d]= : ",i+1);
-                            scanf("\n");
-                            scanf("%[^\n]s",&clt[i].nom);
-                            printf("entrer le numero de client : ");
-                            scanf("%s",&clt[i].numero);
-                            printf("entrer le CIN de client : ");
-                            scanf("%s",&clt[i].CIN);
-                            printf("entrer le mantant : ");
-                            scanf("%d",&clt[i].mantant);
-
-
-                            printf("\n\n ");
+                           introduire ();
+                           count_clt++;
 
                             system("cls");
                         }
-                                count_clt = count_clt+npr;
+
 
                     break;
 
@@ -382,4 +386,8 @@ int main()
               return 0;
                     system("pause");
     }
+
+
+
+
 
