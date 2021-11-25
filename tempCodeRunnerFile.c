@@ -8,7 +8,7 @@
        char nom [20];
        char  numero [10];
        char  CIN [10];
-        int mantant;
+        float mantant;
    };
         // variable ======================================================================================================
 
@@ -24,13 +24,13 @@
 
                          printf("\n entrer le nom et le prenom client : " );
                          scanf("\n");
-                         scanf("%[^\n]s",&clt[count_clt].nom);
+                         scanf("%[^\n]s",clt[count_clt].nom);
                          printf("entrer le numero client : ");
-                         scanf("%s",&clt[count_clt].numero);
+                         scanf("%s",clt[count_clt].numero);
                          printf("entrer le CIN client : ");
-                         scanf("%s",&clt[count_clt].CIN);
+                         scanf("%s",clt[count_clt].CIN);
                          printf("entrer le mantant : ");
-                         scanf("%d",&clt[count_clt].mantant);
+                         scanf("%f",&clt[count_clt].mantant);
                         }
 
 
@@ -367,16 +367,18 @@ int main()
 
                                     tri_descendant();
 
+
                                     for(i=0 ; i<3 ; i++)
                                     {
+
                                         clt[i].mantant += clt[i].mantant * 0.013;
 
-                                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
+                                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%f] \n\n "
                                                         ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
                                     }
 
 
-                                    system("cls");
+
 
                 break;
                 default:

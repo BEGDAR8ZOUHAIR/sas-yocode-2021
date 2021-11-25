@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
- // STRUCT POUR  CLIENT =======================================================================================
+   // STRUCT POUR  CLIENT =======================================================================================
      struct client
    {
        char nom [20];
        char  numero [10];
        char  CIN [10];
-        int mantant;
+        float mantant;
    };
         // variable ======================================================================================================
 
@@ -22,15 +22,15 @@
                        void introduire ()
                        {
 
-                         printf("\n entrer le nom et le prenom client : " );
+                         printf("entrer le nom et le prenom de client : " );
                          scanf("\n");
-                         scanf("%[^\n]s",&clt[count_clt].nom);
+                         scanf(" %[^\n]s",clt[count_clt].nom);
                          printf("entrer le numero client : ");
-                         scanf("%s",&clt[count_clt].numero);
+                         scanf(" %s",clt[count_clt].numero);
                          printf("entrer le CIN client : ");
-                         scanf("%s",&clt[count_clt].CIN);
+                         scanf(" %s",clt[count_clt].CIN);
                          printf("entrer le mantant : ");
-                         scanf("%d",&clt[count_clt].mantant);
+                         scanf(" %.2f",clt[count_clt].mantant);
                         }
 
 
@@ -45,7 +45,7 @@
                 scanf("%s", search);
                 for(int i = 0; i < count_clt; i++){
                     if(strcmp(search, clt[i].CIN) == 0){
-                      printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant %d DH \n\n "
+                      printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant %.2f DH \n\n "
                               ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
                         return i;
                     }
@@ -122,7 +122,7 @@
          if(clt[i].mantant>=Val)
          {
 
-                printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
+                printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%.2f] \n\n "
                        ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
          }
      }
@@ -142,7 +142,7 @@
      {
          if(clt[i].mantant>=Val)
          {
-           printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
+           printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%.2f] \n\n "
                                    ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
          }
 
@@ -158,7 +158,7 @@
                     for(int i=0 ; i<count_clt ; i++)
                          {
 
-                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
+                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%.2f] \n\n "
                             ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
                          }
                 }
@@ -372,7 +372,7 @@ int main()
                                     {
                                         clt[i].mantant += clt[i].mantant * 0.013;
 
-                                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%d] \n\n "
+                                        printf("[%d] le nom [%s] \t le nemero [%s] \t  CIN [%s] \t le mantant [%.2f] \n\n "
                                                         ,i+1,clt[i].nom,clt[i].numero,clt[i].CIN,clt[i].mantant);
                                     }
 
